@@ -1,0 +1,17 @@
+Greg De La Torre
+CS371
+
+Errors:
+
+Circle.java:
+
+The calculation for intersection was incorrect; Found by testIntersect()
+Added factors instead of multiplied: Found by testExpansion()
+
+Circle2.java:
+
+
+Intersects() method returns true for one circle inside another; Found by testInnerCircle()
+The intersection was false wehn rad < dist < (rad + other.radius); Found by testInnerCircle()
+X and Y were swapped in the calling of Super within the Constructor; Found by simpleMove()
+
