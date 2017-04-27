@@ -30,7 +30,7 @@ public Circle(double x, double y, double radius)
 **/
 public double scale(double factor)
 {
-   radius = radius * factor; //Original: radius = radius + factor; radius should be multiplied by factor.
+   radius = radius * factor; // Original: radius = radius + factor
    return radius;
 }
 
@@ -43,7 +43,7 @@ public double scale(double factor)
 public Point moveBy(double xOffset, double yOffset)
 {
    center.x = center.x + xOffset;
-   center.y = center.y + xOffset;
+   center.y = center.y + yOffset; //Original: center.y = center.y + xOffset;
    return center;
 }
 

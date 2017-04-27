@@ -17,7 +17,7 @@ public class Circle1Test
 {
    // Data you need for each test case
    private Circle1 circle1;
-   double LIMIT;
+   private Circle1 newCircle;
 
 // 
 // Stuff you want to do before each test case
@@ -27,7 +27,6 @@ public void setup()
 {
    System.out.println("\nTest starting...");
    circle1 = new Circle1(1,2,3);
-   LIMIT = 0.00001;
 }
 
 //
@@ -63,60 +62,70 @@ public void simpleMoveNeg()
    Assert.assertTrue(p.x == 0 && p.y == 1);
 }
 
+
 //
-//Test an expansion
+// Test an intersection of entire cirlces
 //
 @Test
-public void testExpand(){
-   System.out.println("Running test testExpand.");
-   double rad = circle1.scale(2);
-   Assert.assertEquals(8, rad, LIMIT);
+public void testTotalIntersect(){
+   System.out.println("Running test testIntersect.");
+   newCircle = new Circle1(1, 2, 3);
+   Assert.assertTrue(circle1.intersects(newCircle));
 }
 
 //
-// Test a compression
+// Test scale up
 //
 @Test
-public void testCompress(){
-   System.out.println("Running test testCompress.");
-   double rad = circle1.scale(2);
-   Assert.assertEquals(8, rad, LIMIT);
+public void testScaleUp(){
+   System.out.println("Running test testScaleUp.");
+   double newFactor = circle1.scale(2);
+   Assert.assertTrue( newFactor == 6 );
 }
 
 //
-// Test an intersection
+//Test scale down
+//
+@Test
+public void testScaleDown(){
+   System.out.println("Running test testScaleDown.");
+   double newFactor = circle1.scale(0.5);
+   Assert.assertTrue( newFactor == 1.50000000000000000000 );
+}
+
+//
+//Test an intersection at certain points
 //
 @Test
 public void testIntersect(){
    System.out.println("Running test testIntersect.");
-   Circle1 newCircle = new Circle1(1, 8, 5);
+   newCircle = new Circle1(3, 2, 3);
    Assert.assertTrue(circle1.intersects(newCircle));
 }
 
-
 //
-// Test circle inside another
+//Test cirlce inside another
 //
 @Test
-public void testInnerCircle(){
+public void testInnerCirlce()
+{
    System.out.println("Running test testInnerCircle.");
-   Circle1 newCircle = new Circle1(1, 3, 1);
+   newCircle = new Circle1(1, 2, 2);
    Assert.assertFalse(circle1.intersects(newCircle));
 }
 
-
 //
-// Test seperate circles that do not intersect
+//Test far, seperate circles
 //
 @Test
-public void testSeperateCircles(){
-   System.out.println("Running test testSeperateCircles.");
-   Circle1 newCircle = new Circle1(1, 14, 5);
+public void testOuterCircles(){
+   System.out.println("Running test testOuterCircle.");
+   newCircle = new Circle1(14, 14, 2);
    Assert.assertFalse(circle1.intersects(newCircle));
-}
+}  
 
 
-//End tests
+
 
 /*** NOT USED
 public static void main(String args[])
